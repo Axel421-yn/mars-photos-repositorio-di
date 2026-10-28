@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.marsphotos.MarsViewModelTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-28T06:31:58" hostname="DESKTOP-SIPDCJ4" time="0.271">
+  <properties/>
+  <testcase name="ioFailureBecomesError" classname="com.example.marsphotos.MarsViewModelTest" time="0.179"/>
+  <testcase name="loadingIsVisibleUntilRepositoryCompletes" classname="com.example.marsphotos.MarsViewModelTest" time="0.017"/>
+  <testcase name="requestCanRecoverAfterFailure" classname="com.example.marsphotos.MarsViewModelTest" time="0.007"/>
+  <testcase name="httpFailureBecomesError" classname="com.example.marsphotos.MarsViewModelTest" time="0.062"/>
+  <testcase name="marsViewModel_getMarsPhotos_verifyMarsUiStateSuccess" classname="com.example.marsphotos.MarsViewModelTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

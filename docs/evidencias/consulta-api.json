@@ -1,0 +1,8 @@
+{
+  "consulta": "GET /photos desde PowerShell en la PC; no es una prueba de la UI",
+  "fecha": "2026-10-28T00:24:49.6867404-06:00",
+  "url": "https://android-kotlin-fun-mars-server.appspot.com/photos",
+  "http": 200,
+  "cantidad": 838,
+  "primerId": "424905"
+}

@@ -1,38 +1,45 @@
-Mars Photos
-==================================
+# Mars Photos: repositorio e inyección de dependencias manual
 
-Mars Photos app is a demo app that shows actual images of Mars' surface. These images are
-real-life photos from Mars captured by NASA's Mars rovers. The data is stored on a Web server
-as a REST web service.
+Práctica de Android con Kotlin y Jetpack Compose, basada en el [codelab oficial](https://developer.android.com/codelabs/basic-android-kotlin-compose-add-repository?hl=es-419).
 
-This app demonstrated the use of [Retrofit](https://square.github.io/retrofit/) to make REST requests to the web service, [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) to
-handle the deserialization of the returned JSON to Kotlin data objects, and [Coil](https://coil-kt.github.io/coil/) to load images by URL.
+## Solución
 
-Pre-requisites
---------------
+La aplicación consulta el servicio de Mars Photos y muestra el número de fotografías recibidas. Esta etapa del curso muestra un contador, no una galería de imágenes.
 
-You need to know:
-- How to create Composable functions.
-- How to use architecture components including ViewModel.
-- How to use coroutines for long-running tasks.
-- Familiarity with lazy grid
+- `MarsPhotosRepository`: contrato suspendido de acceso a datos.
+- `NetworkMarsPhotosRepository`: delega en un `MarsApiService` recibido por constructor.
+- `DefaultAppContainer`: construye Retrofit y proporciona el repositorio con inicialización diferida.
+- `MarsPhotosApplication`: crea el contenedor y está registrada en el manifiesto.
+- `MarsViewModel.Factory`: obtiene el contenedor e inyecta el repositorio.
+- `MarsPhotosApp`: crea el ViewModel mediante su Factory.
+- Pruebas con datos y servicios falsos: sin dependencia de la API externa.
 
-Getting Started
----------------
+## Ejecutar
 
-1. [Install Android Studio](https://developer.android.com/studio/install.html), if you don't already
-   have it.
-2. Download the sample.
-3. Import the sample into Android Studio.
-4. Build and run the sample.
+Requisitos verificados: JDK 21, Android SDK 35, Gradle 8.11.1 y Android Gradle Plugin 8.9.2. Android mínimo: API 24; target: API 34.
 
-## [Build this app through hands-on codelabs in the Android Basics with Compose Course](https://developer.android.com/courses/android-basics-compose/course)
+1. Clonar este repositorio y abrirlo en Android Studio.
+2. Configurar el JDK de Gradle en 21 y sincronizar.
+3. Instalar Android SDK 35 si no está disponible. Android Studio configura `local.properties`; este archivo no se versiona.
+4. Ejecutar `app` en un dispositivo o emulador con acceso a Internet.
 
-### [Get data from the internet](https://developer.android.com/codelabs/basic-android-kotlin-compose-getting-data-internet)
-Learn how to use community-developed libraries to connect to a web service to retrieve and display data in your Android Kotlin compose app. 
+En Windows:
 
-### [Add repository and Manual DI](https://developer.android.com/codelabs/basic-android-kotlin-compose-add-repository)
-Learn how to improve the architecture of the app by separating the network calls into a repository.
+~~~powershell
+.\gradlew.bat assembleDebug
+.\gradlew.bat testDebugUnitTest lintDebug
+~~~
 
-### [Load and display images from the internet](https://developer.android.com/codelabs/basic-android-kotlin-compose-load-images)
-Use the Coil library to load and display photos from the internet in your Android Compose app. 
+En Linux/macOS usar `./gradlew`.
+
+## Evidencias
+
+Consultar [el informe](docs/Informe.pdf) y [los registros](docs/evidencias/). El informe distingue pruebas locales de JVM, renderizado de Compose y ejecución en un dispositivo Android.
+
+Las pruebas unitarias comprueban éxito, lista vacía, propagación de errores, carga, errores HTTP/IO y recuperación. Las pruebas visuales usan Robolectric y ejecutan la interfaz Compose en la PC con repositorios de prueba inyectados. Las capturas se generan en `app/build/evidence/`.
+
+## Historial y procedencia
+
+Los commits separan el código inicial, el repositorio, la DI manual, la adaptación del entorno, las pruebas y el informe. Ver [historial](https://github.com/Axel421-yn/mars-photos-repositorio-di/commits/main/) y [procedencia](PROCEDENCIA.md).
+
+El proyecto parte de la rama `repo-starter`, commit `ba9470a`, del repositorio de formación de Google. Se conserva la licencia Apache 2.0.

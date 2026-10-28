@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.marsphotos.MarsUiEvidenceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-28T06:31:46" hostname="DESKTOP-SIPDCJ4" time="12.336">
+  <properties/>
+  <testcase name="successScreenUsesInjectedRepository" classname="com.example.marsphotos.MarsUiEvidenceTest" time="11.863"/>
+  <testcase name="errorScreenShowsNetworkFailure" classname="com.example.marsphotos.MarsUiEvidenceTest" time="0.473"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
