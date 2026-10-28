@@ -37,6 +37,8 @@ android {
         }
     }
 
+    testOptions { unitTests.isIncludeAndroidResources = true }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -67,6 +69,9 @@ android {
 }
 
 dependencies {
+    testImplementation("org.robolectric:robolectric:4.14.1")
+    testImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    testImplementation("androidx.compose.ui:ui-test-junit4")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
@@ -95,4 +100,17 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
+
+
+
+// Keep Robolectric downloads and lock files inside this project's build directory.
+tasks.withType<Test>().configureEach {
+    val testHome = layout.buildDirectory.dir("test-home").get().asFile
+    val testTemp = layout.buildDirectory.dir("test-temp").get().asFile
+    doFirst { testHome.mkdirs(); testTemp.mkdirs() }
+    systemProperty("java.io.tmpdir", testTemp.absolutePath)
+    systemProperty("user.home", testHome.absolutePath)
+    systemProperty("robolectric.dependency.repo.url", "https://repo.maven.apache.org/maven2")
+}
+
 
