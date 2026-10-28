@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace = "com.example.marsphotos"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.marsphotos"
@@ -67,6 +67,8 @@ android {
 }
 
 dependencies {
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
     // Import the Compose BOM
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
@@ -93,3 +95,4 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
+
